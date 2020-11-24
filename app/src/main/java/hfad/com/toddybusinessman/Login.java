@@ -3,6 +3,7 @@ package hfad.com.toddybusinessman;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -38,6 +39,8 @@ public class Login extends AppCompatActivity {
 
         TextInputLayout emailBox = findViewById(R.id.emailText);
         TextInputLayout passswordBox=findViewById(R.id.passwordText);
+        passswordBox.setError(null);
+        emailBox.setError(null);
         String email=emailBox.getEditText().getText().toString().trim();
         String password=passswordBox.getEditText().getText().toString().trim();
         login(email,password);
@@ -52,7 +55,7 @@ public class Login extends AppCompatActivity {
         try {
             postData.put("email", email);
             postData.put("password", password);
-            volleyPost(postData);
+            volleyPost(postData); ///calls the volley method to make request. Email, password values are passed to volleyPost() method
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -72,7 +75,7 @@ public class Login extends AppCompatActivity {
             public void onResponse(JSONObject response) {
 
                 Log.i("MyActivity", "MyClass.getView() — get item number "+response);
-                changetext(response);
+                handleResponse(response);// After the trespons e is recieved handleResponse() method will be called to read json response and take next steps.
             }
         }, new Response.ErrorListener() {
             @Override
@@ -85,15 +88,28 @@ public class Login extends AppCompatActivity {
 
     }
 
-    public void changetext(JSONObject obj)
-    {
+    public void handleResponse(JSONObject obj)
+    { // If username or password is incorrect error message wil be displayed. Else sharedpreferenses will be set with json data and navigate to home screen.
         TextInputLayout emailBox = findViewById(R.id.emailText);
+        String errorMessage="The email or the password which you entered is incorrect";
         try {
             boolean status = obj.getBoolean("status");
             if(status)
-            {emailBox.getEditText().setText("Pass");}
+            {
+                Log.i("MyActivity", "Json obj= "+obj.getString("name"));
+                setPref(obj);
+
+            }
             else
-            {{emailBox.getEditText().setText("Fail");}}
+            {
+                TextInputLayout passswordBox=findViewById(R.id.passwordText);
+                passswordBox.setError("The email or the password which you entered is incorrect");
+                //TextInputLayout emailBox=findViewById(R.id.emailText);
+                emailBox.setError("The email or the password which you entered is incorrect");
+
+
+
+            }
             //  Block of code to try
         }
         catch(Exception e) {
@@ -104,21 +120,59 @@ public class Login extends AppCompatActivity {
 
     }
 
-    public void setPref(View view)
+    public void setPref(JSONObject response)
     {
         Context context=getApplication();
 
 
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.Editor editor = preferences.edit();
-        editor.putString("name","Harneet");
-        editor.apply();
+        try{
+            String name1=response.getString("name");
+            String permit=response.getString("permit");
+            String business_type=response.getString("business_type");
+            String noOfTrees=response.getString("noOfTrees");
+            String location=response.getString("location");
+            String email=response.getString("email");
+            String password=response.getString("password");
+
+            Log.i("----------name is=0000", name1);
+
+            editor.putString("name",name1);
+           editor.putString("permit",permit);
+          editor.putString("business_type",business_type);
+         editor.putString("noOfTrees",noOfTrees);
+            editor.putString("location",location);
+            editor.putString("email",email);
+           editor.putString("password",password);
+           editor.putString("loggedon","true");
+            editor.apply();
+            Intent intent=new Intent(this,MainActivity.class);
+            startActivity(intent);
+
+
+
+
+        }
+        catch(Exception e)
+        {
+
+        }
+
+
+
     }
 
     public void dispref(View view)
     { SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         String name = preferences.getString("name", "");
-        Log.i("MyActivity", "MyClass.getView() — get item number "+name);
+        String email = preferences.getString("email", "");
+        String noOfTrees = preferences.getString("noOfTrees", "");
+
+
+        Log.i("MyActivity", "name= "+name);
+        Log.i("MyActivity", "Email= "+email);
+        Log.i("MyActivity", "trees=r "+noOfTrees);
 
     }
 }
