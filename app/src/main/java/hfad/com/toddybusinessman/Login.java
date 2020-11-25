@@ -32,6 +32,7 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        loginStatusCheck();
     }
 
     public void buttonClick(View view)
@@ -154,6 +155,7 @@ public class Login extends AppCompatActivity {
             passswordBox.getEditText().setText("");
             Intent intent=new Intent(this,MainActivity.class);
             startActivity(intent);
+            finish();
 
 
 
@@ -166,6 +168,17 @@ public class Login extends AppCompatActivity {
 
 
 
+    }
+
+    public void loginStatusCheck()
+    {SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String loggedon = preferences.getString("loggedon", "");
+        if(loggedon.equals("true"))
+        {
+            Intent intent=new Intent(this,MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
     }
 
     public void dispref(View view)
