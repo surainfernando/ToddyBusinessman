@@ -5,6 +5,7 @@
     <string name="title_notifications">Notifications</string>
     <string-array name="businesstype">
         <item>Toddy Producer</item>
-        <item>Toddy Buyer</item>
+        <item>Toddy Bottling Factory</item>
+        <item>Distiller Factory</item>
     </string-array>
 </resources>

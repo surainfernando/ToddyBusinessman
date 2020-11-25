@@ -72,13 +72,22 @@
         android:onClick="buttonClick"
         android:text="clear" />
     <Button
-        android:id="@+id/button4"
+    android:id="@+id/button4"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="20dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:onClick="dispref"
+    android:text="displaty" />
+    <Button
+        android:id="@+id/button5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:onClick="dispref"
-        android:text="displaty" />
+        android:onClick="registerscreen"
+        android:text="Register" />
 
 </LinearLayout>

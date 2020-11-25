@@ -12,6 +12,7 @@
         android:orientation="vertical">
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/nameText"
+        android:background="@drawable/border"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -66,8 +67,8 @@
             android:id="@+id/treeNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/border"
             android:layout_marginTop="20dp"
-            android:visibility="invisible"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:hint="Enter Number of Trees"
@@ -77,6 +78,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toTopOf="parent"
+                android:inputType="number"
                 tools:layout_editor_absoluteX="19dp" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -86,6 +88,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="10dp"
+            android:background="@drawable/border"
             android:layout_marginRight="10dp"
             android:hint="Enter Location"
             app:layout_constraintTop_toTopOf="parent"
@@ -103,6 +106,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="10dp"
+            android:background="@drawable/border"
             android:layout_marginRight="10dp"
             android:hint="Enter Email Address"
             app:layout_constraintTop_toTopOf="parent"
@@ -120,6 +124,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="10dp"
+            android:background="@drawable/border"
             android:layout_marginRight="10dp"
             android:hint="Enter Password"
             app:layout_constraintTop_toTopOf="parent"
@@ -136,6 +141,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
+                android:background="@drawable/border"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:hint="Repeat Password"
@@ -159,8 +165,28 @@
         android:layout_marginTop="20dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
+        android:layout_marginBottom="30dp"
         android:onClick="buttonClick"
         android:text="Button" />
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:onClick="dispref"
+            android:text="Button" />
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:onClick="dispref2"
+            android:layout_marginBottom="30dp"
+            android:text="Button add" />
 
 
 

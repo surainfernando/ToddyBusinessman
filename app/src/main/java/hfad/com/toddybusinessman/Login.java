@@ -96,7 +96,7 @@ public class Login extends AppCompatActivity {
             boolean status = obj.getBoolean("status");
             if(status)
             {
-                Log.i("MyActivity", "Json obj= "+obj.getString("name"));
+                Log.i("MyActivity", "Json objSuccessful Login");
                 setPref(obj);
 
             }
@@ -147,6 +147,11 @@ public class Login extends AppCompatActivity {
            editor.putString("password",password);
            editor.putString("loggedon","true");
             editor.apply();
+
+            TextInputLayout emailBox = findViewById(R.id.emailText);
+            TextInputLayout passswordBox=findViewById(R.id.passwordText);
+            emailBox.getEditText().setText("");
+            passswordBox.getEditText().setText("");
             Intent intent=new Intent(this,MainActivity.class);
             startActivity(intent);
 
@@ -166,13 +171,38 @@ public class Login extends AppCompatActivity {
     public void dispref(View view)
     { SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         String name = preferences.getString("name", "");
-        String email = preferences.getString("email", "");
+        String permit = preferences.getString("permit", "");
+        String business_type = preferences.getString("business_type", "");
         String noOfTrees = preferences.getString("noOfTrees", "");
+        String location = preferences.getString("location", "");
+        String email = preferences.getString("email", "");
+        String password = preferences.getString("password", "");
+        String loggedon = preferences.getString("loggedon", "");
+
+
+
+
+
+
 
 
         Log.i("MyActivity", "name= "+name);
-        Log.i("MyActivity", "Email= "+email);
+        Log.i("MyActivity", "permit= "+permit);
+        Log.i("MyActivity", "business= "+business_type);
         Log.i("MyActivity", "trees=r "+noOfTrees);
+        Log.i("MyActivity", "Elocation= "+location);
+        Log.i("MyActivity", "Email= "+email);
+        Log.i("MyActivity", "passw= "+password);
+        Log.i("MyActivity", "Email= "+loggedon);
 
+        Log.i("MyActivity", "nam000000000000000000000000000e= ");
+        //JSONObject obj=(JSONObject)preferences;
+        //Log.i("MyActivity", "name= "+obj);
+
+    }
+    public void registerscreen(View view)
+    {
+        Intent intent=new Intent(this,Register.class);
+        startActivity(intent);
     }
 }
