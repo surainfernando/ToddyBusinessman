@@ -99,13 +99,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="15dp"
-                android:text="Batch Details" />
+                android:text="Select Customer" />
             <Spinner
                 style="@style/Widget.AppCompat.DropDownItem.Spinner"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
-                android:entries="@array/businesstype"
-                android:id="@+id/businesstype"
+                android:entries="@array/sellers"
+                android:id="@+id/buyername"
                 />
         </LinearLayout>
 
@@ -119,6 +119,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp"
+        android:onClick="makeSellRequest"
         android:text="Sell Batch" />
 
 
