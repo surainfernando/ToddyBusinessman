@@ -10,13 +10,13 @@
     <Button
         android:id="@+id/addButton"
         android:layout_width="match_parent"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="5dp"
         android:layout_height="wrap_content"
         android:text="+ Create New Batch" />
     <Button
         android:id="@+id/refreshButton"
         android:layout_width="match_parent"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="10dp"
         android:layout_height="wrap_content"
         android:text="Refresh List" />
     <androidx.recyclerview.widget.RecyclerView
@@ -25,6 +25,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="20dp"
+        android:layout_marginBottom="40dp"
         android:layout_height="0dp"
         android:layout_weight="1"
         />

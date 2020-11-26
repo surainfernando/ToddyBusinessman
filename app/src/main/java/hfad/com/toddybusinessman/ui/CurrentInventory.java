@@ -17,6 +17,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -41,6 +43,7 @@ import hfad.com.toddybusinessman.ConnectionString;
 import hfad.com.toddybusinessman.Contact;
 import hfad.com.toddybusinessman.Login;
 import hfad.com.toddybusinessman.R;
+import hfad.com.toddybusinessman.Sell_Toddy_Screen;
 import hfad.com.toddybusinessman.ToddyBatch;
 import hfad.com.toddybusinessman.ui.notifications.NotificationsViewModel;
 
@@ -69,12 +72,8 @@ RecyclerView rvContacts;
             // Initialize contacts
             contacts  = new ArrayList<Contact>();
             toddyBatchList=new ArrayList<ToddyBatch>();
-            Contact contact=new Contact("opppa",true);
-        Contact contact2=new Contact("oppfffpa",true);
-        Contact contact3=new Contact("opppa",true);
-            contacts.add(contact);
-        contacts.add(contact2);
-        contacts.add(contact3);
+            initiate();
+
             // Create adapter passing in the sample user data
 //            BatchAdapter adapter = new BatchAdapter(contacts);
 //            // Attach the adapter to the recyclerview to populate items
@@ -102,6 +101,23 @@ RecyclerView rvContacts;
                 Log.i("Btype", "Link come");
                 addButton.setVisibility(View.GONE);
 
+            }
+        }
+        public void initiate()
+        { SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+            String name = preferences.getString("name", "");
+            String permit_numbr= preferences.getString("permit", "");
+            JSONObject postData = new JSONObject();
+            try {
+                postData.put("name", name);
+                postData.put("permit", permit_numbr);
+
+
+
+                sendRequest(postData);
+
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
         }
         public void setListener()
@@ -196,7 +212,9 @@ RecyclerView rvContacts;
         try{
             JSONArray user_wallets = response.getJSONArray("result");
             JSONObject[] batchList=new JSONObject[user_wallets.length()];
-            for(int i = 0; i<user_wallets.length();i++){
+            int lengthx=user_wallets.length();
+            lengthx=lengthx-1;
+            for(int i = lengthx; i>=0;i--){
 
                 JSONObject wallet = user_wallets.getJSONObject(i);
                 batchList[i]=wallet;
@@ -206,6 +224,24 @@ RecyclerView rvContacts;
                 toddyBatchList.add(batch);
             }
             BatchAdapter adapter = new BatchAdapter(toddyBatchList);
+            adapter.setOnItemClickListener(new BatchAdapter.OnItemClickListener() {
+                @Override
+                public void onItemClick(View view, int position) {
+                    ToddyBatch a=toddyBatchList.get(position);
+                    String b=String.valueOf(a.getVolume());
+                    int batchID=a.getBatch_id();
+                    Bundle bundle=new Bundle();
+
+
+                   // String name = users.get(position).name;
+                   // Toast.makeText(getContext(),  b+"   was clicked!", Toast.LENGTH_SHORT).show();
+                    Intent intent=new Intent(getActivity(), Sell_Toddy_Screen.class);
+                    intent.putExtra("batchID",batchID);
+                    intent.putExtra("volume",a.getVolume());
+                    intent.putExtra("date",a.getDate_created());
+                    startActivity(intent);
+                }
+            });
             // Attach the adapter to the recyclerview to populate items
             rvContacts.setAdapter(adapter);
             // Set layout manager to position the items
