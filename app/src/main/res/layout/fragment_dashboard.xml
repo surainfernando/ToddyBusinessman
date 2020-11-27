@@ -6,24 +6,12 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".ui.dashboard.DashboardFragment">
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/emailText"
+    <Button
+        android:id="@+id/refreshButton"
         android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        app:errorEnabled="true"
-        android:hint="Enter Email Address"
-        android:background="@color/colorAccent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="16dp">
-    <com.google.android.material.textfield.TextInputEditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="19dp" />
-    </com.google.android.material.textfield.TextInputLayout>
+        android:text="Refresh List" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvContacts"
