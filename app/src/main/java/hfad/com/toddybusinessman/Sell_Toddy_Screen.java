@@ -112,6 +112,7 @@ public class Sell_Toddy_Screen extends AppCompatActivity {
             @Override
             public void onResponse(JSONObject response) {
                 Log.i("MyActivity", "7777777777777777777777777777777777");
+                goBack();
                 try{
 //                    JSONArray user_wallets = response.getJSONArray("result");
 //                    JSONObject[] batchList=new JSONObject[user_wallets.length()];
@@ -146,5 +147,10 @@ public class Sell_Toddy_Screen extends AppCompatActivity {
         });
 
         requestQueue.add(jsonObjectRequest);
+    }
+    public void goBack()
+    {
+        Intent intent=new Intent(this,MainActivity.class);
+        startActivity(intent);
     }
 }

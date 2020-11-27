@@ -11,8 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Sell_Toddy_Screen"></activity>
-        <activity android:name=".MainActivity2"></activity>
+        <activity android:name=".Accept_Transfer"></activity>
+        <activity android:name=".Sell_Toddy_Screen" />
+        <activity android:name=".MainActivity2" />
         <activity android:name=".Add_Toddy_Batch" />
         <activity android:name=".Login">
             <intent-filter>

@@ -32,6 +32,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import hfad.com.toddybusinessman.Accept_Transfer;
 import hfad.com.toddybusinessman.BatchAdapter;
 import hfad.com.toddybusinessman.ConnectionString;
 import hfad.com.toddybusinessman.Contact;
@@ -118,7 +119,7 @@ public class DashboardFragment extends Fragment {
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, postUrl, postData, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                Log.i("Success", "sucesss7777777777777777777777777777777777");
+                Log.i("Success", "sucesssyyyyy7777777777777777777777777777777777");
                 setDataToRecycler(response);
 
                 //System.out.println(response);
@@ -160,19 +161,26 @@ public class DashboardFragment extends Fragment {
             adapter.setOnItemClickListener(new ToddyRequestCard.OnItemClickListener() {
                 @Override
                 public void onItemClick(View view, int position) {
-//                    ToddyRequestModel a=toddySellRequestList.get(position);
-//                    String b=String.valueOf(a.getVolume());
-//                    int batchID=a.getBatch_id();
-//                    Bundle bundle=new Bundle();
+                    ToddyRequestModel a=toddySellRequestList.get(position);
 
+                    int id=a.getRequest_id();
+                    String name=a.getSeller_name();
+                    String permitNumber=a.getSeller_permit_number();
+                    int volume=a.getVolume();
+                    String date=a.getDate_created();
+                    int batchID=a.getBatch_id();
+                    Intent intent=new Intent(getActivity(), Accept_Transfer.class);
+                    intent.putExtra("RequestID",id);
+                    intent.putExtra("name",name);
+                    intent.putExtra("permitNumber",permitNumber);
+                    intent.putExtra("volume",volume);
+                    intent.putExtra("date",date);
+                    intent.putExtra("batchID",batchID);
 
-                    // String name = users.get(position).name;
-                    // Toast.makeText(getContext(),  b+"   was clicked!", Toast.LENGTH_SHORT).show();
-//                    Intent intent=new Intent(getActivity(), Sell_Toddy_Screen.class);
-//                    intent.putExtra("batchID",batchID);
+                    startActivity(intent);
 //                    intent.putExtra("volume",a.getVolume());
 //                    intent.putExtra("date",a.getDate_created());
-//                    startActivity(intent);
+//
                 }
             });
             // Attach the adapter to the recyclerview to populate items
