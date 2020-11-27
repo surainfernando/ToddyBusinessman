@@ -11,6 +11,10 @@ import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 public class ToddyRequestCard extends
@@ -101,11 +105,25 @@ public class ToddyRequestCard extends
          TextView batch_id=holder.batch_id;
          batch_id.setText(String.valueOf(batch.getBatch_id()));
          TextView batch_date=holder.batch_date;
-         batch_date.setText(batch.getDate_created());
+
         TextView volume_text=holder.volume_text;
         volume_text.setText(String.valueOf(batch.getVolume()));
         TextView permit_number=holder.permit_number;
         permit_number.setText(String.valueOf(batch.getSeller_permit_number()));
+        try{
+            DateFormat df1 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+            String string1 =batch.getDate_created();
+
+            Date result1 = df1.parse(string1);
+            SimpleDateFormat timeStampFormat = new SimpleDateFormat("dd-MM-yyyy");
+            String DateStr = timeStampFormat.format(result1);
+            batch_date.setText(DateStr);
+        }
+        catch (ParseException e)
+        {
+
+        }
+
 
 
         // Set item views based on your views and data model

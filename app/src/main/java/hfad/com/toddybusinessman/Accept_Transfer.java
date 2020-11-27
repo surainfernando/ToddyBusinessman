@@ -20,6 +20,11 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Accept_Transfer extends AppCompatActivity {
 TextView producenameView;
 TextView dateView;
@@ -28,7 +33,9 @@ TextView creatorPermit;
 int requestid;
 int batchid;
 String name;
+String sellername;
 String permitNumber;
+String sellerpermitNumber;
 int volume;
 String date;
 
@@ -38,10 +45,12 @@ String date;
 
         Intent intent=getIntent();
         requestid=intent.getIntExtra("RequestID",0);
-//        name=intent.getStringExtra("name");
-//        permitNumber=intent.getStringExtra("permitNumber");
+        sellername=intent.getStringExtra("name");
+       sellerpermitNumber=intent.getStringExtra("permitNumber");
         volume=intent.getIntExtra("volume",0);
         date=intent.getStringExtra("date");
+        Log.i("MyActivity", "MyClass.getView() — get item number "+date);
+
         batchid=intent.getIntExtra("batchID",0);
 
 
@@ -57,10 +66,39 @@ String date;
     }
     public void setTextViewValues()
     {
-        producenameView.setText(name);
-        dateView.setText(date);
-        volumeView.setText(String.valueOf("volume"));
-        creatorPermit.setText(permitNumber);
+        producenameView.setText(sellername);
+
+       // dateView.setText(date);
+
+        volumeView.setText(String.valueOf(volume));
+        creatorPermit.setText(sellerpermitNumber);
+        String dtStart = "2010-10-15T09:27:37Z";
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+        try {
+            DateFormat df1 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+            String string1 =date;
+
+            Date result1 = df1.parse(string1);
+            SimpleDateFormat timeStampFormat = new SimpleDateFormat("dd-MM-yyyy");
+         String DateStr = timeStampFormat.format(result1);
+
+            dateView.setText(DateStr);
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+//        String dtStart = "2010-10-15T09:27:37Z";
+//        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+//        try {
+//            Date date1 = format.parse(dtStart);
+//            System.out.println(date1);
+//            SimpleDateFormat timeStampFormat = new SimpleDateFormat("dd-yyyy-MM HHmm");
+//            String DateStr = timeStampFormat.format(date1);
+//            producenameView.setText(DateStr);
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        }
 
 
 
@@ -77,6 +115,9 @@ String date;
             postData.put("batchId", batchid);
             postData.put("ownerName",name);
             postData.put("ownerPermit",permitNumber);
+            postData.put("sellerPermit",sellerpermitNumber);
+            postData.put("volume",volume);
+
             //volleyPost(postData); ///calls the volley method to make request. Email, password values are passed to volleyPost() method
             apiCallMaketransfer(postData);
         } catch (JSONException e) {

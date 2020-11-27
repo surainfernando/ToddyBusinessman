@@ -169,6 +169,7 @@ public class DashboardFragment extends Fragment {
                     int volume=a.getVolume();
                     String date=a.getDate_created();
                     int batchID=a.getBatch_id();
+
                     Intent intent=new Intent(getActivity(), Accept_Transfer.class);
                     intent.putExtra("RequestID",id);
                     intent.putExtra("name",name);
