@@ -11,6 +11,10 @@ import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 public class BatchAdapter extends
@@ -51,9 +55,9 @@ public class BatchAdapter extends
             super(itemView);
             this.context = context;
 
-            nameTextView = (TextView) itemView.findViewById(R.id.contact_name);
+
             messageButton = (Button) itemView.findViewById(R.id.message_button);
-            permit_number=(TextView)itemView.findViewById(R.id.permit_number);
+
             date_created=(TextView)itemView.findViewById(R.id.date_created);
             volume=(TextView)itemView.findViewById(R.id.volume);
             itemView.setOnClickListener(this);
@@ -98,16 +102,28 @@ public class BatchAdapter extends
         ToddyBatch batch = mContacts.get(position);
 
         // Set item views based on your views and data model
-        TextView textView = holder.nameTextView;
-        textView.setText(batch.getCreator_name());
+
         Button button = holder.messageButton;
         button.setText(batch.getCreator_permit());
-        TextView permit_number=holder.permit_number;
-        permit_number.setText(batch.getCreator_permit());
+
         TextView date_created=holder.date_created;
-        date_created.setText(batch.date_created);
+
         TextView volume=holder.volume;
         volume.setText(String.valueOf(batch.volume));
+        try{
+            DateFormat df1 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+            String string1 =batch.getDate_created();
+
+            Date result1 = df1.parse(string1);
+            SimpleDateFormat timeStampFormat = new SimpleDateFormat("dd-MM-yyyy");
+            String DateStr = timeStampFormat.format(result1);
+            date_created.setText(DateStr);
+
+        }
+        catch (ParseException e)
+        {
+
+        }
 
 
 

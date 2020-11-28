@@ -9,7 +9,7 @@
     android:paddingBottom="10dp"
     >
 
-    android:textStyle="bold|italic"
+
     <TextView
         android:text="Sales Request Made By"
         android:layout_width="wrap_content"

@@ -22,6 +22,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Sell_Toddy_Screen extends AppCompatActivity {
 
     int batch_id;
@@ -42,7 +47,21 @@ public class Sell_Toddy_Screen extends AppCompatActivity {
         buyer=(Spinner)findViewById(R.id.buyername);
         volumeV.setText(String.valueOf(volume));
         batchV.setText(String.valueOf(batch_id));
-        dateV.setText(datet);
+
+        try{
+            DateFormat df1 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+            String string1 =datet;
+
+            Date result1 = df1.parse(string1);
+            SimpleDateFormat timeStampFormat = new SimpleDateFormat("dd-MM-yyyy");
+            String DateStr = timeStampFormat.format(result1);
+            dateV.setText(DateStr);
+
+        }
+        catch (ParseException e)
+        {
+
+        }
 
 
 
