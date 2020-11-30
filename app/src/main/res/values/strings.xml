@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ToddyBusinessman</string>
+    <string name="app_name">Toddy Businessman</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
@@ -10,7 +10,7 @@
         <item>Distiller Factory</item>
     </string-array>
     <string-array name="sellers">
-        <item>John Bottling</item>
+        <item>Star Toddy Bottling</item>
         <item>DCSL Distillers</item>
 
     </string-array>

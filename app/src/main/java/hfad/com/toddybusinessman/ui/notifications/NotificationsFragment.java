@@ -22,6 +22,9 @@ import hfad.com.toddybusinessman.R;
 
 public class NotificationsFragment extends Fragment {
     Button button;
+    TextView nameBox;
+    TextView permitBox;
+    TextView businessBox;
 
     private NotificationsViewModel notificationsViewModel;
 
@@ -30,17 +33,29 @@ public class NotificationsFragment extends Fragment {
         notificationsViewModel =
                 ViewModelProviders.of(this).get(NotificationsViewModel.class);
         View root = inflater.inflate(R.layout.fragment_notifications, container, false);
-        final TextView textView = root.findViewById(R.id.text_notifications);
-        notificationsViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
+
          button =root.findViewById(R.id.button6);
-         setTestListner();;
+
+         nameBox=(TextView)root.findViewById(R.id.nameBox);
+         permitBox=(TextView)root.findViewById(R.id.permitBox);
+         businessBox=(TextView)root.findViewById(R.id.businessBox);
+         setTestListner();
+         textSetter();
 
         return root;
+    }
+    public void textSetter()
+    {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        String business_type = preferences.getString("business_type", "");
+        String name = preferences.getString("name", "");
+        String permit = preferences.getString("permit", "");
+        Log.i("Btype", business_type);
+        business_type=business_type.trim();
+        businessBox.setText(business_type);
+        permitBox.setText(permit);
+        nameBox.setText(name);
+
     }
 
     public void setTestListner()

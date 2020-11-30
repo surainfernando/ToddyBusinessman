@@ -14,9 +14,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:textSize="20dp"
         android:textStyle="bold"
-        android:fontFamily=""
-        android:textColor="@color/black"
+        android:textColor="@color/notificationbarColor"
         android:layout_marginTop="20dp"
         android:text="Sell Toddy" />
     <TextView
@@ -24,6 +24,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:textSize="15dp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
         android:layout_marginTop="20dp"
         android:text="Batch Details" />
     <LinearLayout
@@ -36,6 +39,8 @@
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
             android:text="Batch ID" />
         <TextView
             android:id="@+id/IDView"
@@ -55,6 +60,8 @@
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
             android:text="Date Created" />
         <TextView
             android:id="@+id/dateView"
@@ -70,7 +77,8 @@
         android:layout_height="wrap_content"
         android:layout_width="match_parent">
         <TextView
-
+            android:textColor="@color/black"
+            android:textStyle="bold"
 
             android:layout_width="120dp"
             android:layout_height="wrap_content"
@@ -123,6 +131,8 @@
         android:layout_marginTop="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp"
+        android:textColor="@color/white"
+        android:background="@color/lightseagreen"
         android:onClick="makeSellRequest"
         android:text="Sell Batch" />
 

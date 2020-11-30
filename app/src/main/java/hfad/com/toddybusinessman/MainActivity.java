@@ -1,6 +1,9 @@
 package hfad.com.toddybusinessman;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.util.Log;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -12,7 +15,7 @@ import androidx.navigation.ui.NavigationUI;
 
 
 public class MainActivity extends AppCompatActivity {
-
+    AppBarConfiguration appBarConfiguration;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,9 +24,14 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView navView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
-        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_current_inventory, R.id.navigation_dashboard, R.id.navigation_notifications)
-                .build();
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String business_type = preferences.getString("business_type", "");
+        Log.i("Btype", business_type);
+        business_type=business_type.trim();
+        appBarConfiguration = new AppBarConfiguration.Builder(
+              R.id.navigation_current_inventory, R.id.navigation_dashboard, R.id.navigation_notifications)
+              .build();
+
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);

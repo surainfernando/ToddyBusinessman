@@ -84,7 +84,7 @@ public class Sell_Toddy_Screen extends AppCompatActivity {
         String targetCutomerPermitNumber="";
         if(indexselected==0)
         {
-            targetCutomerPermitNumber="Po1245567";
+            targetCutomerPermitNumber="P04567";
         }
         else
         {

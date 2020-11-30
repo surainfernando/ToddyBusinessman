@@ -11,12 +11,20 @@
         android:id="@+id/addButton"
         android:layout_width="match_parent"
         android:layout_marginTop="5dp"
+        android:background="@color/lightseagreen"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:textColor="@color/white"
         android:layout_height="wrap_content"
         android:text="+ Create New Batch" />
     <Button
         android:id="@+id/refreshButton"
         android:layout_width="match_parent"
         android:layout_marginTop="10dp"
+        android:background="@color/lightseagreen"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:textColor="@color/white"
         android:layout_height="wrap_content"
         android:text="Refresh List" />
     <androidx.recyclerview.widget.RecyclerView

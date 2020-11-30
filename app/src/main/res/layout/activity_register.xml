@@ -167,7 +167,9 @@
         android:layout_marginRight="10dp"
         android:layout_marginBottom="30dp"
         android:onClick="buttonClick"
-        android:text="Button" />
+        android:textColor="@color/white"
+        android:background="@color/lightseagreen"
+        android:text="Sign Up" />
         <Button
             android:id="@+id/button2"
             android:layout_width="match_parent"
@@ -175,6 +177,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
+            android:visibility="gone"
             android:onClick="dispref"
             android:text="Button" />
         <Button
@@ -184,6 +187,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
+            android:visibility="gone"
             android:onClick="dispref2"
             android:layout_marginBottom="30dp"
             android:text="Button add" />

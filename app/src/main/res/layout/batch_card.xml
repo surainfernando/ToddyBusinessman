@@ -16,7 +16,7 @@
         android:layout_marginLeft="5dp"
         android:layout_height="wrap_content"
         android:textStyle="bold"
-        android:textColor="@color/black"
+        android:textColor="@color/notificationbarColor"
         android:layout_weight="1"
         />
     <TextView
@@ -33,7 +33,7 @@
         android:layout_marginLeft="5dp"
         android:layout_height="wrap_content"
         android:textStyle="bold"
-        android:textColor="@color/black"
+        android:textColor="@color/notificationbarColor"
         android:layout_weight="1"
         />
     <TextView
